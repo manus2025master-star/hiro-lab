@@ -1,0 +1,6 @@
+/.Trash/
+__pycache__/
+*.pyc
+*.swp
+.env
+*.bak
