@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | ヒロラボ</title>
+<meta name="description" content="ヒロラボへのお問い合わせ・ご連絡はこちらから。記事へのご指摘、取材依頼、タイポ報告などお気軽にどうぞ。">
+<meta name="theme-color" content="#1f1f24">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="ヒロラボ" href="feed.xml">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="お問い合わせ | ヒロラボ">
+<meta property="og:description" content="ヒロラボへのお問い合わせ・ご連絡はこちらから。記事へのご指摘、取材依頼、タイポ報告などお気軽にどうぞ。">
+<meta property="og:image" content="images/ogp.svg">
+<meta property="og:url" content="https://hirolab.com/contact.html">
+<meta property="og:site_name" content="ヒロラボ">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="お問い合わせ | ヒロラボ">
+<meta name="twitter:description" content="ヒロラボへのお問い合わせはこちらから。">
+
+<!-- JSON-LD ContactPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "お問い合わせ | ヒロラボ",
+  "url": "https://hirolab.com/contact.html"
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="site-logo">
+      <span class="logo-mark">◢</span>
+      <span class="logo-text">ヒロラボ</span>
+    </a>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="articles.html">記事</a></li>
+        <li><a href="rankings.html">ランキング</a></li>
+        <li><a href="tags.html">タグ</a></li>
+        <li><a href="about.html">ヒロラボについて</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><button class="search-toggle" aria-label="検索を開く">🔍</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>お問い合わせ</h1>
+    <p class="lede">記事へのご指摘・取材依頼・タイポ報告など、お気軽にどうぞ。返信には 2〜3 日かかる場合があります。</p>
+  </div>
+</section>
+
+<main class="section">
+  <div class="container">
+    <form class="contact-form" action="#" method="post" onsubmit="event.preventDefault(); alert('これはデモフォームです。実際の送信は行われていません。');">
+      <div class="form-row">
+        <label for="name">お名前<span class="required">*</span></label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-row">
+        <label for="email">メールアドレス<span class="required">*</span></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-row">
+        <label for="subject">件名</label>
+        <input type="text" id="subject" name="subject" placeholder="例: 記事へのご指摘 / 取材依頼 / 広告掲載のご相談">
+      </div>
+      <div class="form-row">
+        <label for="message">メッセージ<span class="required">*</span></label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">送信する</button>
+      <p class="contact-alt">
+        フォームがうまく動かない場合は、<br>
+        <a href="mailto:hello@example.com">hello@example.com</a> まで直接ご連絡ください。
+      </p>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <h4>ヒロラボ</h4>
+        <p>比較と検証で、賢い選択を。<br>商品・サービスを実際に使って正直にレビューします。</p>
+      </div>
+      <div class="footer-links">
+        <h4>サイトマップ</h4>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="articles.html">記事一覧</a></li>
+          <li><a href="rankings.html">ランキング</a></li>
+          <li><a href="tags.html">タグ一覧</a></li>
+          <li><a href="about.html">ヒロラボについて</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-disclosure">
+        <h4>広告の表記</h4>
+        <p>本サイトは商品・サービスの紹介にアフィリエイトプログラムを利用しています。記事内のリンクが提携企業の広告である場合、「広告」「PR」「プロモーション」と明記しています。 <a href="policy.html">プライバシーポリシー</a> · <a href="disclaimer.html">免責事項</a> · <a href="%E7%89%B9%E5%95%86%E6%B3%95.html">特商法</a> · <a href="feed.xml">RSS</a></p>
+      </div>
+    </div>
+    <p class="copyright">© 2026 ヒロラボ. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="search.js"></script>
+<script>
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (btn && nav) {
+    btn.addEventListener('click', function() {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>
+
+</body>
+</html>

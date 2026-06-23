@@ -1,6 +1,11 @@
-/.Trash/
+# Local tooling/logs
+.watch.out
+.watch.log
+.watch.pid
+.Trash/
+.pyc
 __pycache__/
-*.pyc
-*.swp
+# Secrets / env
 .env
 *.bak
+.log

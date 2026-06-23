@@ -1,0 +1,354 @@
+/* =========================================================
+   ヒロラボ — Sumi Hero Styles
+   Art Direction: ジャパネスク抽象 / グラデ / 濃墨グレー / ゆっくり
+   ========================================================= */
+
+.sumi-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f1f24;             /* 濃墨グレー基色 */
+  color: #e8e6df;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* --- ベース背景グラデ（墨の濃度変化） --- */
+.sumi-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 25% 35%, rgba(60, 59, 68, 0.95) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 78% 62%, rgba(34, 33, 40, 0.9) 0%, transparent 58%),
+    radial-gradient(circle at 50% 18%, rgba(255, 242, 210, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 62% 82%, rgba(18, 17, 22, 0.7) 0%, transparent 50%),
+    linear-gradient(168deg, #1f1f24 0%, #15151a 100%);
+  z-index: -2;
+}
+
+/* --- 和紙テクスチャ（極薄ノイズ） --- */
+.sumi-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- 墨アニメーション層（SVG filter） --- */
+.sumi-ink {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.sumi-ink svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- 筆ツール（筆の穂先 + 描画軌跡） --- */
+.ink-brush {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  width: 64px;
+  height: 64px;
+  margin-left: 0;
+  margin-top: 0;
+  opacity: 0;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+  will-change: transform, opacity;
+  transform: translate(-200px, -200px) rotate(45deg);
+}
+
+/* 筆の軌跡（線） */
+.ink-stroke {
+  fill: none;
+  stroke: #0a0a10;
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: url(#sumi-blur);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  will-change: stroke-dashoffset, opacity;
+}
+.ink-stroke.s1 { stroke-dasharray: 2400; stroke-dashoffset: 2400; }
+.ink-stroke.s2 { stroke-dasharray: 1800; stroke-dashoffset: 1800; }
+.ink-stroke.s3 { stroke-dasharray: 1200; stroke-dashoffset: 1200; }
+.ink-stroke.s4 { stroke-dasharray: 900;  stroke-dashoffset: 900;  }
+.ink-stroke.s5 { stroke-dasharray: 600;  stroke-dashoffset: 600;  }
+
+/* --- 筆の穂先SVG本体 --- */
+.brush-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- 線描画のJS制御スタイル --- */
+.ink-stroke.appearing { opacity: 0.9; }
+.ink-stroke.completed { opacity: 0.85; }
+.ink-stroke.bleeding {
+  animation: ink-bleed 18s ease-in-out infinite alternate;
+}
+@keyframes ink-bleed {
+  0%   { filter: url(#sumi-blur) blur(0px); opacity: 0.85; }
+  100% { filter: url(#sumi-blur) blur(2px); opacity: 0.95; }
+}
+
+/* --- 墨滴（落ちて広がる） --- */
+.ink-drop {
+  fill: #0a0a10;
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+.ink-drop.d1 { animation: drop-fall 6s ease-in 13s infinite; }
+.ink-drop.d2 { animation: drop-fall 7s ease-in 17s infinite; }
+.ink-drop.d3 { animation: drop-fall 5.5s ease-in 21s infinite; }
+.ink-drop.d4 { animation: drop-fall 8s ease-in 25s infinite; }
+@keyframes drop-fall {
+  0%   { opacity: 0; transform: translateY(-200px) scale(0.3); }
+  10%  { opacity: 0.9; transform: translateY(-150px) scale(0.4); }
+  60%  { opacity: 0.85; transform: translateY(0) scale(1); filter: url(#sumi-blur); }
+  70%  { opacity: 0.95; transform: translateY(0) scale(1.4); filter: url(#sumi-blur); }
+  85%  { opacity: 0.5; transform: translateY(20px) scale(1.6); filter: url(#sumi-blur); }
+  100% { opacity: 0; transform: translateY(40px) scale(1.8); filter: url(#sumi-blur); }
+}
+
+/* --- 墨の粒子レイヤー（ゆっくり流れる） --- */
+.ink-blob {
+  fill: #0a0a10;
+  filter: url(#sumi-blur);
+  animation: ink-flow 32s ease-in-out infinite alternate;
+  transform-origin: center;
+  mix-blend-mode: multiply;
+  will-change: transform;
+}
+.ink-blob.b2 { animation-duration: 44s; animation-delay: -8s; }
+.ink-blob.b3 { animation-duration: 56s; animation-delay: -16s; }
+.ink-blob.b4 { animation-duration: 38s; animation-delay: -24s; }
+.ink-blob.b5 { animation-duration: 50s; animation-delay: -4s; }
+
+@keyframes ink-flow {
+  0%   { transform: translate(-4%, -2%) scale(1)   rotate(0deg); }
+  25%  { transform: translate(3%, -5%) scale(1.05) rotate(8deg); }
+  50%  { transform: translate(6%, 4%)  scale(0.95) rotate(-4deg); }
+  75%  { transform: translate(-2%, 6%) scale(1.08) rotate(6deg); }
+  100% { transform: translate(-4%, -2%) scale(1)   rotate(0deg); }
+}
+
+/* --- グラデの光膜（上に淡く） --- */
+.sumi-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(232, 215, 180, 0.07) 0%, transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(180, 160, 130, 0.04) 0%, transparent 60%);
+  animation: grad-pulse 22s ease-in-out infinite alternate;
+  will-change: opacity;
+}
+@keyframes grad-pulse {
+  0%   { opacity: 0.7; }
+  100% { opacity: 1.0; }
+}
+
+/* --- コンテンツ層 --- */
+.sumi-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  max-width: 720px;
+}
+
+.sumi-mark {
+  display: inline-block;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.6em;
+  color: #a8a39a;
+  border-top: 1px solid rgba(168, 163, 154, 0.4);
+  border-bottom: 1px solid rgba(168, 163, 154, 0.4);
+  padding: 0.6rem 1.4rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fade-in 2.4s ease-out 0.4s forwards;
+  will-change: opacity;
+}
+
+.sumi-title {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  margin: 0 0 1.25rem;
+  line-height: 1.15;
+  color: #f6f4eb;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.55);
+  opacity: 0;
+  animation: fade-up 2.8s ease-out 0.8s forwards;
+  will-change: opacity, transform;
+}
+
+.sumi-subtitle {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  color: #c9c4b8;
+  margin: 0 0 2.5rem;
+  opacity: 0;
+  animation: fade-up 2.8s ease-out 1.6s forwards;
+  will-change: opacity, transform;
+}
+
+.sumi-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(232, 230, 223, 0.4);
+  margin: 0 auto 2.5rem;
+  opacity: 0;
+  animation: fade-in 3s ease-out 2.2s forwards;
+  will-change: opacity;
+}
+
+.sumi-cta {
+  display: inline-block;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.5em;
+  color: #e8e6df;
+  border: 1px solid rgba(232, 230, 223, 0.55);
+  padding: 1rem 3.2rem;
+  text-decoration: none;
+  transition: all 1.2s ease;
+  opacity: 0;
+  animation: fade-up 2.8s ease-out 2.8s forwards;
+  will-change: opacity, transform;
+}
+.sumi-cta:hover {
+  background: rgba(232, 230, 223, 0.08);
+  border-color: #f4f1e8;
+  text-decoration: none;
+  letter-spacing: 0.58em;
+}
+
+/* --- スクロールヒント --- */
+.sumi-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  color: #8a857a;
+  opacity: 0;
+  animation: fade-in 3s ease-out 3.6s forwards;
+  will-change: opacity;
+}
+.sumi-scroll::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(138, 133, 122, 0.6), transparent);
+  margin: 0.8rem auto 0;
+  animation: scroll-pulse 3s ease-in-out infinite;
+}
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.6; }
+  50%      { transform: scaleY(1.4); opacity: 1.0; }
+}
+
+/* --- BGMトグル --- */
+.sumi-bgm {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(232, 230, 223, 0.25);
+  color: #c9c4b8;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif JP", serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.sumi-bgm:hover {
+  background: rgba(0,0,0,0.5);
+  border-color: rgba(232, 230, 223, 0.5);
+}
+.sumi-bgm[data-playing="true"] {
+  color: #f4f1e8;
+  border-color: rgba(244, 241, 232, 0.6);
+}
+
+/* --- 共通アニメ --- */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- アクセシビリティ：動きを減らす設定 --- */
+@media (prefers-reduced-motion: reduce) {
+  .ink-blob,
+  .sumi-gradient {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .sumi-mark,
+  .sumi-title,
+  .sumi-subtitle,
+  .sumi-divider,
+  .sumi-cta,
+  .sumi-scroll {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .ink-drop {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    opacity: 0 !important;
+  }
+  .ink-stroke {
+    transition: none !important;
+    animation: none !important;
+    opacity: 0.85 !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .ink-brush {
+    display: none !important;
+  }
+}
+
+/* --- モバイル最適化 --- */
+@media (max-width: 640px) {
+  .sumi-hero { min-height: 80vh; }
+  .sumi-content { padding: 3rem 1rem; }
+  .sumi-mark { letter-spacing: 0.4em; padding: 0.5rem 1rem; }
+  .sumi-cta { padding: 0.875rem 2rem; letter-spacing: 0.3em; }
+}

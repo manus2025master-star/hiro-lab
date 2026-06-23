@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- 濃墨背景グラデ -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f1f24"/>
+      <stop offset="100%" stop-color="#15151a"/>
+    </linearGradient>
+    <!-- 墨ぼかしフィルタ（粒子の滲み） -->
+    <filter id="ink-blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="22"/>
+    </filter>
+    <!-- 和紙ノイズ -->
+    <filter id="washi" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0.9  0 0 0 0 0.88  0 0 0 0 0.83  0 0 0 0.05 0"/>
+    </filter>
+  </defs>
+
+  <!-- 背景：濃墨 -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+
+  <!-- 墨の粒子（滲んで流れる） -->
+  <g filter="url(#ink-blur)" opacity="0.55" fill="#0a0a10">
+    <ellipse cx="180" cy="180" rx="160" ry="200"/>
+    <ellipse cx="1020" cy="140" rx="220" ry="140"/>
+    <ellipse cx="1060" cy="520" rx="180" ry="220"/>
+    <ellipse cx="120" cy="500" rx="200" ry="160"/>
+  </g>
+
+  <!-- 和紙ノイズ（極薄） -->
+  <rect width="1200" height="630" filter="url(#washi)" opacity="0.5"/>
+
+  <!-- 流れる筆致（墨線が描かれたような太線） -->
+  <g fill="none" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round" opacity="0.12">
+    <path d="M 60 360 C 220 280 380 360 540 320 S 820 280 980 340 1140 300 1180 280"/>
+    <path d="M 60 470 C 200 410 360 490 520 450 S 800 410 960 470"/>
+  </g>
+
+  <!-- 上部：墨のタイトルマーク -->
+  <g transform="translate(80, 150)">
+    <text x="0" y="0" font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+          font-size="20" font-weight="400" fill="#a8a39a" letter-spacing="0.6em">比較 × 検証</text>
+    <line x1="0" y1="22" x2="80" y2="22" stroke="#a8a39a" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- メインタイトル：ヒロラボ -->
+  <text x="80" y="290" font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+        font-size="118" font-weight="300" fill="#f4f1e8" letter-spacing="0.18em">ヒロラボ</text>
+
+  <!-- サブタイトル -->
+  <text x="84" y="350" font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+        font-size="30" font-weight="400" fill="#c9c4b8" letter-spacing="0.3em">比較と検証で、賢い選択を。</text>
+
+  <!-- 朱の点（アクセント・落款風） -->
+  <circle cx="92" cy="396" r="6" fill="#9c3a2e"/>
+
+  <!-- ボトムラインとキャッチ -->
+  <line x1="80" y1="540" x2="240" y2="540" stroke="#8a857a" stroke-width="1" opacity="0.6"/>
+  <text x="80" y="578" font-family="'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif"
+        font-size="18" font-weight="400" fill="#8a857a" letter-spacing="0.18em">商品・サービスを実際に使って正直にレビュー</text>
+</svg>

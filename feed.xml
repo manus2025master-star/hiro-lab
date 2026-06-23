@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ヒロラボ | 比較と検証で、賢い選択を。</title>
+    <link>https://hirolab.com/</link>
+    <description>商品・サービスを実際に購入・利用して、メリット・デメリットを正直にレビューする個人レビューサイトです。比較と検証で、賢い選択を。</description>
+    <language>ja</language>
+    <copyright>© 2026 ヒロラボ</copyright>
+    <lastBuildDate>Sat, 21 Jun 2026 22:00:00 +0900</lastBuildDate>
+    <atom:link href="https://hirolab.com/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>ふるさと納税の始め方 2026 — はじめてでも失敗しない全手順</title>
+      <link>https://hirolab.com/article-howto.html</link>
+      <guid>https://hirolab.com/article-howto.html</guid>
+      <description>ふるさと納税をはじめてやる人向けに、仕組みの解説から上限シミュレーション、申し込み、確定申告までを完全ガイド。会社員でも年末調整で完結する方法も。</description>
+      <category>暮らし</category>
+      <pubDate>Wed, 10 Jun 2026 12:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>Soundcore Liberty 4 Pro 1 ヶ月使用レビュー — 2 万円台の完成形か?</title>
+      <link>https://hirolab.com/article-review.html</link>
+      <guid>https://hirolab.com/article-review.html</guid>
+      <description>Anker の Soundcore Liberty 4 Pro を 1 ヶ月間実際に使用。音質・装着感・バッテリー・価格の 4 軸で本音レビュー。忖度なしの結論は…。</description>
+      <category>ガジェット</category>
+      <pubDate>Mon, 15 Jun 2026 12:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>ワイヤレスイヤホン 5 機種を 3 ヶ月使って比較した結論</title>
+      <link>https://hirolab.com/article.html</link>
+      <guid>https://hirolab.com/article.html</guid>
+      <description>音質・装着感・バッテリー・価格の 4 軸で、主要 5 機種を実機検証。忖度なしの結論は…。</description>
+      <category>ガジェット</category>
+      <pubDate>Thu, 18 Jun 2026 12:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>副業のはじめ方 2026 — 会社員でも安全に始める方法</title>
+      <link>https://hirolab.com/articles.html</link>
+      <guid>https://hirolab.com/articles.html#career</guid>
+      <description>本業に迷惑をかけず、最初は月 1 万円でもいい。現実的な副業のはじめかた。</description>
+      <category>転職・キャリア</category>
+      <pubDate>Thu, 28 May 2026 12:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>薄毛対策 6 ヶ月実践記録 — 効果があったもの、なかったもの</title>
+      <link>https://hirolab.com/articles.html</link>
+      <guid>https://hirolab.com/articles.html#health</guid>
+      <description>AGA クリニック、サプリ、シャンプー、育毛剤 — 本音で記録しました。</description>
+      <category>暮らしの課題</category>
+      <pubDate>Wed, 20 May 2026 12:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>Kindle Unlimited で読むべきマンガ 12 選 (2026)</title>
+      <link>https://hirolab.com/articles.html</link>
+      <guid>https://hirolab.com/articles.html#culture</guid>
+      <description>980 円の価値があるか? 実際に読んで厳選した、月額本サービスが本気のリスト。</description>
+      <category>サブカル</category>
+      <pubDate>Tue, 12 May 2026 12:00:00 +0900</pubDate>
+    </item>
+
+    <item>
+      <title>NISA 成長投資枠、3 年やってみた正直な成績</title>
+      <link>https://hirolab.com/articles.html</link>
+      <guid>https://hirolab.com/articles.html#money</guid>
+      <description>インデックス投資を中心に積立した 3 年間の実績と、見えてきた反省点。</description>
+      <category>お金</category>
+      <pubDate>Mon, 05 May 2026 12:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>
